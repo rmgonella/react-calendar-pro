@@ -1,4 +1,4 @@
-Calendar Pro
+# Calendar Pro
 
 Developed by: Rodrigo Marchi Gonella
 
@@ -24,26 +24,31 @@ The project is divided into two main folders: backend and frontend.
 
 Backend (Node.js/Express/MongoDB)
 File/Directory	Description
-server.js	Application entry point. Configures Express and connects to MongoDB.
-.env	Environment variables (PORT, MONGODB_URI, JWT_SECRET).
-models/User.js	Mongoose model for users (includes password hashing with bcryptjs).
-models/Event.js	Mongoose model for appointments.
-middleware/auth.js	Middleware for JWT token verification.
-routes/auth.js	Authentication routes (/register, /login, /me).
-routes/events.js	CRUD routes for appointments (includes filters by status and date).
-Frontend (React)
+| :--- | :--- |
+| `server.js` | Ponto de entrada da aplicação, configura o Express e a conexão com o MongoDB. |
+| `.env` | Variáveis de ambiente (PORT, MONGODB\_URI, JWT\_SECRET). |
+| `models/User.js` | Modelo Mongoose para o usuário (inclui hash de senha com `bcryptjs`). |
+| `models/Event.js` | Modelo Mongoose para os compromissos. |
+| `middleware/auth.js` | Middleware para verificação do token JWT. |
+| `routes/auth.js` | Rotas de autenticação (`/register`, `/login`, `/me`). |
+| `routes/events.js` | Rotas CRUD para os compromissos (inclui filtros por status e data). |
+
+### Frontend (React)
+
 File/Directory	Description
-src/App.jsx	Main component managing authentication state and rendering Login or Calendar screens.
-src/contexts/AuthContext.jsx	React Context that manages authentication state and login/register/logout functions.
-src/services/api.js	Axios instance configured with base URL and interceptor to attach JWT token.
-src/services/eventService.js	Functions to interact with the backend’s CRUD event routes.
-src/components/Login.jsx	Form component for login and registration with enhanced design.
-src/components/Header.jsx	Header component displaying user info and logout button.
-src/components/Calendar.jsx	Main calendar component with statistics and advanced filters.
-src/components/EventModal.jsx	Modal for creating and editing events, with validation and UX improvements.
-src/utils/dateUtils.js	Utility functions for date formatting.
-public/images/	Contains demonstration images.
-Local Installation Guide
+| :--- | :--- |
+| `src/App.jsx` | Componente principal que gerencia o estado de autenticação e renderiza as telas de Login ou Calendário. |
+| `src/contexts/AuthContext.jsx` | Contexto React para gerenciar o estado de autenticação e as funções de login/cadastro/logout. |
+| `src/services/api.js` | Instância do Axios configurada com a URL base e interceptor para anexar o token JWT. |
+| `src/services/eventService.js` | Funções para interagir com as rotas CRUD de eventos do backend. |
+| `src/components/Login.jsx` | Componente para as telas de Login e Cadastro. |
+| `src/components/Header.jsx` | Componente de cabeçalho exibido após o login. |
+| `src/components/Calendar.jsx` | Componente principal do calendário, onde o `React Big Calendar` é renderizado e os eventos são gerenciados. |
+| `src/components/EventModal.jsx` | Modal para criação e edição de eventos. |
+| `src/utils/dateUtils.js` | Utilitários para formatação de datas usando `moment`. |
+| `public/images/` | Contém as imagens de demonstração. |
+
+## Local Installation Guide
 
 Follow the steps below to set up and run the project locally.
 
@@ -102,13 +107,22 @@ Demo images are located in frontend/public/images/.
 
 Login Screen
 
+![Tela de Login](frontend/public/images/login.webp)
+
 Calendar Screen
+
+![Tela de Calendário](frontend/public/images/calendario.webp)
 
 Event Registration Modal
 
+![Modal de Cadastro de Evento](frontend/public/images/cadastro_evento.webp)
+
 Routes and Components Overview
+
 Backend Routes
+
 Method	Route	Description	Access
+
 POST	/api/auth/register	Creates a new user.	Public
 POST	/api/auth/login	Authenticates the user and returns a JWT token.	Public
 GET	/api/auth/me	Returns the logged-in user’s data.	Private
@@ -118,7 +132,9 @@ PUT	/api/events/:id	Updates an existing event.	Private
 DELETE	/api/events/:id	Deletes an event.	Private
 PATCH	/api/events/:id/status	Updates event status to “Completed” or “Pending”.	Private
 Key Frontend Components
+
 Component	Description
+
 AuthContext	Manages global authentication state. Stores the JWT token in localStorage and automatically attaches it to API requests via Axios interceptor.
 Login	Login and registration form component. Uses react-toastify for success/error messages.
 Calendar	The core of the application. Manages event state, applies filters, and renders React Big Calendar. Includes a statistics panel.
