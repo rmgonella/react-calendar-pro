@@ -1,150 +1,129 @@
-# Calendar Pro
+Calendar Pro
 
-**Desenvolvido por: Rodrigo Marchi Gonella**
+Developed by: Rodrigo Marchi Gonella
 
-O **Calendar Pro** é um sistema completo de gerenciamento de compromissos (eventos) full-stack, construído com **React** no frontend e **Node.js/Express** com **MongoDB** no backend.
+Calendar Pro is a complete full-stack appointment management system built with React on the frontend and Node.js/Express with MongoDB on the backend.
 
-## Funcionalidades
+Features
 
-*   **Autenticação JWT:** Login e cadastro de usuários seguros.
-*   **CRUD de Compromissos:** Criação, leitura, atualização e exclusão de eventos com data, hora e descrição.
-*   **Interface Interativa:** Utiliza o `React Big Calendar` para uma visualização de calendário moderna e funcional.
-*   **Design Moderno:** Frontend aprimorado com **Tailwind CSS** e componentes **shadcn/ui** para uma experiência de usuário superior.
-*   **Filtros:** Permite filtrar compromissos por status (**"Concluído"** e **"Pendente"**).
-*   **Notificações Visuais:** Utiliza `React Toastify` para feedback visual ao usuário.
+JWT Authentication: Secure user login and registration.
 
-## Estrutura do Projeto
+Appointment CRUD: Create, read, update, and delete events with date, time, and description.
 
-O projeto é dividido em duas pastas principais: `backend` e `frontend`.
+Interactive Interface: Uses React Big Calendar for a modern and functional calendar view.
 
-### Backend (Node.js/Express/MongoDB)
+Modern Design: Frontend enhanced with Tailwind CSS and shadcn/ui components for a superior user experience.
 
-| Arquivo/Diretório | Descrição |
-| :--- | :--- |
-| `server.js` | Ponto de entrada da aplicação, configura o Express e a conexão com o MongoDB. |
-| `.env` | Variáveis de ambiente (PORT, MONGODB\_URI, JWT\_SECRET). |
-| `models/User.js` | Modelo Mongoose para o usuário (inclui hash de senha com `bcryptjs`). |
-| `models/Event.js` | Modelo Mongoose para os compromissos. |
-| `middleware/auth.js` | Middleware para verificação do token JWT. |
-| `routes/auth.js` | Rotas de autenticação (`/register`, `/login`, `/me`). |
-| `routes/events.js` | Rotas CRUD para os compromissos (inclui filtros por status e data). |
+Filters: Allows filtering appointments by status (“Completed” and “Pending”).
 
-### Frontend (React)
+Visual Notifications: Uses React Toastify for visual user feedback.
 
-| Arquivo/Diretório | Descrição |
-| :--- | :--- |
-| `src/App.jsx` | Componente principal que gerencia o estado de autenticação e renderiza as telas de Login ou Calendário. |
-| `src/contexts/AuthContext.jsx` | Contexto React para gerenciar o estado de autenticação e as funções de login/cadastro/logout. |
-| `src/services/api.js` | Instância do Axios configurada com a URL base e interceptor para anexar o token JWT. |
-| `src/services/eventService.js` | Funções para interagir com as rotas CRUD de eventos do backend. |
-| `src/components/Login.jsx` | Componente de formulário para login e cadastro com design aprimorado. |
-| `src/components/Header.jsx` | Componente de cabeçalho com informações do usuário e botão de logout. |
-| `src/components/Calendar.jsx` | Componente principal do calendário, com estatísticas e filtros avançados. |
-| `src/components/EventModal.jsx` | Modal para criação e edição de eventos com validação e melhorias de UX. |
-| `src/utils/dateUtils.js` | Utilitários para formatação de datas. |
-| `public/images/` | Contém as imagens de demonstração. |
+Project Structure
 
-## Instalação Local Passo a Passo
+The project is divided into two main folders: backend and frontend.
 
-Siga os passos abaixo para configurar e rodar o projeto em sua máquina local.
+Backend (Node.js/Express/MongoDB)
+File/Directory	Description
+server.js	Application entry point. Configures Express and connects to MongoDB.
+.env	Environment variables (PORT, MONGODB_URI, JWT_SECRET).
+models/User.js	Mongoose model for users (includes password hashing with bcryptjs).
+models/Event.js	Mongoose model for appointments.
+middleware/auth.js	Middleware for JWT token verification.
+routes/auth.js	Authentication routes (/register, /login, /me).
+routes/events.js	CRUD routes for appointments (includes filters by status and date).
+Frontend (React)
+File/Directory	Description
+src/App.jsx	Main component managing authentication state and rendering Login or Calendar screens.
+src/contexts/AuthContext.jsx	React Context that manages authentication state and login/register/logout functions.
+src/services/api.js	Axios instance configured with base URL and interceptor to attach JWT token.
+src/services/eventService.js	Functions to interact with the backend’s CRUD event routes.
+src/components/Login.jsx	Form component for login and registration with enhanced design.
+src/components/Header.jsx	Header component displaying user info and logout button.
+src/components/Calendar.jsx	Main calendar component with statistics and advanced filters.
+src/components/EventModal.jsx	Modal for creating and editing events, with validation and UX improvements.
+src/utils/dateUtils.js	Utility functions for date formatting.
+public/images/	Contains demonstration images.
+Local Installation Guide
 
-### Pré-requisitos
+Follow the steps below to set up and run the project locally.
 
-*   Node.js (v18+)
-*   MongoDB (Instalado e rodando localmente)
+Prerequisites
 
-### 1. Clonar o Repositório
+Node.js (v18+)
 
-```bash
-# Este passo é simulado, mas seria o primeiro em um ambiente real
-# git clone <url-do-repositorio> calendar-pro
+MongoDB (installed and running locally)
+
+1. Clone the Repository
+# This step is illustrative but would be the first in a real environment
+# git clone <repository-url> calendar-pro
 # cd calendar-pro
-```
 
-### 2. Configuração do Backend
+2. Backend Setup
 
-Navegue até a pasta `backend` e instale as dependências:
+Navigate to the backend folder and install dependencies:
 
-```bash
 cd backend
 npm install
-```
 
-Crie um arquivo `.env` na pasta `backend` com as seguintes variáveis:
 
-```
+Create a .env file inside the backend folder with the following variables:
+
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/calendar-pro
 JWT_SECRET=calendar_pro_jwt_secret_key_2024
 NODE_ENV=development
-```
 
-Inicie o servidor:
 
-```bash
+Start the server:
+
 npm run dev
-```
 
-O servidor estará rodando em `http://localhost:5000`.
 
-### 3. Configuração do Frontend
+The server will be running at http://localhost:5000.
 
-Navegue até a pasta `frontend` e instale as dependências (usando `pnpm` conforme o template, mas `npm install` também funcionaria):
+3. Frontend Setup
 
-```bash
+Navigate to the frontend folder and install dependencies (using pnpm as in the template, but npm install also works):
+
 cd ../frontend
 pnpm install
-```
 
-Inicie a aplicação React:
 
-```bash
+Start the React application:
+
 pnpm run dev --host
-```
 
-A aplicação estará acessível em `http://localhost:5173`.
 
-## Prints das Telas (Design Aprimorado)
+The app will be accessible at http://localhost:5173.
 
-As imagens de demonstração estão localizadas em `frontend/public/images/`.
+Screenshots (Enhanced Design)
 
-### Tela de Login
+Demo images are located in frontend/public/images/.
 
-![Tela de Login](frontend/public/images/login_novo.webp)
+Login Screen
 
-### Tela de Calendário
+Calendar Screen
 
-![Tela de Calendário](frontend/public/images/calendario_novo.webp)
+Event Registration Modal
 
-### Modal de Cadastro de Evento
+Routes and Components Overview
+Backend Routes
+Method	Route	Description	Access
+POST	/api/auth/register	Creates a new user.	Public
+POST	/api/auth/login	Authenticates the user and returns a JWT token.	Public
+GET	/api/auth/me	Returns the logged-in user’s data.	Private
+GET	/api/events	Lists all user events (supports status, startDate, and endDate filters).	Private
+POST	/api/events	Creates a new event.	Private
+PUT	/api/events/:id	Updates an existing event.	Private
+DELETE	/api/events/:id	Deletes an event.	Private
+PATCH	/api/events/:id/status	Updates event status to “Completed” or “Pending”.	Private
+Key Frontend Components
+Component	Description
+AuthContext	Manages global authentication state. Stores the JWT token in localStorage and automatically attaches it to API requests via Axios interceptor.
+Login	Login and registration form component. Uses react-toastify for success/error messages.
+Calendar	The core of the application. Manages event state, applies filters, and renders React Big Calendar. Includes a statistics panel.
+EventModal	Modal form for event CRUD interface. Allows creating, editing, deleting, and updating appointment status with form validation.
+eventService	Abstraction layer for API calls, simplifying backend communication.
+Credits
 
-![Modal de Cadastro de Evento](frontend/public/images/cadastro_evento_novo.webp)
-
-## Explicação das Rotas e Componentes
-
-### Rotas do Backend
-
-| Método | Rota | Descrição | Acesso |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | Cria um novo usuário. | Público |
-| `POST` | `/api/auth/login` | Autentica o usuário e retorna um token JWT. | Público |
-| `GET` | `/api/auth/me` | Retorna os dados do usuário logado. | Privado |
-| `GET` | `/api/events` | Lista todos os eventos do usuário (suporta filtros `status`, `startDate`, `endDate`). | Privado |
-| `POST` | `/api/events` | Cria um novo evento. | Privado |
-| `PUT` | `/api/events/:id` | Atualiza um evento existente. | Privado |
-| `DELETE` | `/api/events/:id` | Deleta um evento. | Privado |
-| `PATCH` | `/api/events/:id/status` | Atualiza o status do evento para "Concluído" ou "Pendente". | Privado |
-
-### Componentes Chave do Frontend
-
-| Componente | Descrição |
-| :--- | :--- |
-| `AuthContext` | Gerencia o estado global de autenticação. Armazena o token JWT no `localStorage` e o anexa automaticamente nas requisições via interceptor do Axios. |
-| `Login` | Componente de formulário para login e cadastro. Utiliza `react-toastify` para exibir mensagens de sucesso/erro. |
-| `Calendar` | O coração da aplicação. Gerencia o estado dos eventos, aplica filtros e renderiza o `React Big Calendar`. Inclui painel de estatísticas. |
-| `EventModal` | Formulário modal para a interface CRUD de eventos. Permite criar, editar, deletar e alterar o status de um compromisso com validação de formulário. |
-| `eventService` | Camada de abstração para as chamadas de API, facilitando a comunicação com o backend. |
-
-## Créditos
-
-Desenvolvido por **Rodrigo Marchi Gonella**.
+Developed by Rodrigo Marchi Gonella.
